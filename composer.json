@@ -1,0 +1,25 @@
+{
+    "name": "tii/wow-api",
+    "description": "Owen Wilson Wow API integration for PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tii\\WowApi\\": "src/"
+        },
+      "files": [
+        "src/helpers.php"
+      ]
+    },
+    "authors": [
+        {
+            "name": "Tii",
+            "email": "mail@tii.one"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
