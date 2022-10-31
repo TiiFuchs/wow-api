@@ -2,7 +2,7 @@
 
 namespace Tii\WowApi\Data;
 
-class Movie extends Data
+class Wow extends Data
 {
 
     public string $movie;

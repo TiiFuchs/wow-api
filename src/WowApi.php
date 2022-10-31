@@ -4,7 +4,7 @@ namespace Tii\WowApi;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use Tii\WowApi\Data\Movie;
+use Tii\WowApi\Data\Wow;
 
 class WowApi
 {
@@ -22,7 +22,7 @@ class WowApi
     }
 
     /**
-     * @return Movie[]
+     * @return Wow[]
      * @throws GuzzleException
      */
     public static function random(
@@ -52,16 +52,16 @@ class WowApi
         $content = $response->getBody()->getContents();
         $raw = json_decode($content, true);
 
-        return array_map(fn($data) => new Movie($data), $raw);
+        return array_map(fn($data) => new Wow($data), $raw);
     }
 
     /**
-     * @return Movie|Movie[]
+     * @return Wow|Wow[]
      * @throws GuzzleException
      */
     public static function ordered(
         string $index
-    ): Movie|array {
+    ): Wow|array {
         $response = self::makeClient()->get("ordered/$index");
 
         $content = $response->getBody()->getContents();
@@ -70,10 +70,10 @@ class WowApi
         $isArray = str_starts_with($content, '[');
 
         if ($isArray) {
-            return array_map(fn($data) => new Movie($data), $raw);
+            return array_map(fn($data) => new Wow($data), $raw);
         }
 
-        return new Movie($raw);
+        return new Wow($raw);
     }
 
     /**
